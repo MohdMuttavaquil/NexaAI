@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const [titles, setTitles] = useState([])
   const navigate = useNavigate()
-  const { userInfo, setUserInfo, setChat, setTitleId, titleId } = useContext(AppContext)
+  const { userInfo, setUserInfo, setChat, setTitleId, titleId, url } = useContext(AppContext)
 
   useEffect(() => {
     fetchTitles()
@@ -17,7 +17,7 @@ const Sidebar = () => {
   }, [])
 
   const fetchTitles = async () => {
-    const res = await axios.get('http://localhost:3000/chat/history', { withCredentials: true })
+    const res = await axios.get(`${url}/chat/history`, { withCredentials: true })
     setTitles(res.data)
   }
 
@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   const logout = async () => {
 
-    const res = await axios.post('http://localhost:3000/user/logout', {}, {
+    const res = await axios.post(`${url}/user/logout`, {}, {
       withCredentials: true
     })
     navigate('/')
@@ -42,7 +42,7 @@ const Sidebar = () => {
   const chatPage = async (id) => {
     setChat([])
     setTitleId(id)
-    const res = await axios.post('http://localhost:3000/chat/messages', { titleId: id }, { withCredentials: true })
+    const res = await axios.post(`${url}/chat/messages`, { titleId: id }, { withCredentials: true })
     setChat(res.data)
   }
 
@@ -54,7 +54,7 @@ const Sidebar = () => {
       </div>
 
       <div className='pl-6 min-h-[50vh]'>
-        <p>Reacnt</p>
+        <p className='text-xl font-semibold my-2'>Reacnt</p>
         {titles.map((i) => <div key={i._id} className='overflow-y-auto flex flex-col gap-0.5'>
           <p onClick={() => chatPage(i._id)} className='cursor-pointer hover:bg-black py-1 pl-2 rounded-xl'>{i.title}</p>
         </div>)}

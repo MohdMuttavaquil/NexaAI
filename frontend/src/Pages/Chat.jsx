@@ -12,7 +12,7 @@ const Chat = () => {
     const [message, setMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     
-    const  { titleId, setTitleId, chat, setChat } = useContext(AppContext)
+    const  { titleId, setTitleId, chat, setChat, url } = useContext(AppContext)
     const navigate = useNavigate()
 
     const show = () => {
@@ -25,7 +25,7 @@ const Chat = () => {
     const chatApi = async () => {
         try {
             setIsLoading(true)
-            const res = await axios.post('http://localhost:3000/chat', { message: message, titleId: titleId }, { withCredentials: true })
+            const res = await axios.post(`${url}/chat`, { message: message, titleId: titleId }, { withCredentials: true })
             const data = { type: 'a', message: res.data.text }
             setTitleId(res.data.titleId)
             setChat(prev => [...prev, data])

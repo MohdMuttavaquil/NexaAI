@@ -1,7 +1,8 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LuX } from "react-icons/lu"
+import { AppContext } from '../Context/StoreContext'
 
 const Singin = () => {
 
@@ -10,6 +11,7 @@ const Singin = () => {
     password: ''
   })
   const [login, setLogin] = useState(true)
+  const { url } = useContext(AppContext)
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -26,14 +28,14 @@ const Singin = () => {
   }
 
   const loginApi = async () => {
-    const res = await axios.post('http://localhost:3000/user/login', data, {
+    const res = await axios.post(`${url}/user/login`, data, {
       withCredentials: true
     })
     checkRes(res)
   }
 
   const singinApi = async () => {
-    const res = await axios.post('http://localhost:3000/user/singin', data, {
+    const res = await axios.post(`${url}/user/singin`, data, {
       withCredentials: true
     })
     checkRes(res)
