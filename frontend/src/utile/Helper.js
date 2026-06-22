@@ -2,7 +2,7 @@ import axios from "axios";
 
 const authtication = async () => {
     try {
-        const res = await axios.get('http://localhost:3000/user/check', {
+        const res = await axios.get('https://hpz7blqb44kkjzogumd642dole0lbwou.lambda-url.ap-south-1.on.aws/user/check', {
             withCredentials: true
         })
         if (res.data.success == true) {
