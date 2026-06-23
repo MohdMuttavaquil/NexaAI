@@ -26,6 +26,7 @@ const Chat = () => {
         try {
             setIsLoading(true)
             const res = await axios.post(`${url}/chat`, { message: message, titleId: titleId }, { withCredentials: true })
+            console.log(res.data)
             const data = { type: 'a', message: res.data.text }
             setTitleId(res.data.titleId)
             setChat(prev => [...prev, data])

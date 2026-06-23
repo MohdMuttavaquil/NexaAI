@@ -10,6 +10,7 @@ const createToken = (id, email) => {
 
 const singIn = async (req, res) => {
 
+     const { email, password } = req.body
 
     try {
         if (!validator.isEmail(email)) {
