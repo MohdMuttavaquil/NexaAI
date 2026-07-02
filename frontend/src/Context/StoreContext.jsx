@@ -7,12 +7,12 @@ export const AppProvider = ({ children }) =>{
    const [titleId, setTitleId] = useState()
    const [userInfo, setUserInfo] = useState()
    const [chat, setChat] = useState([])
-   const url = 'https://w5p5lfzxsqgwlwqvl7innu6nka0txdkr.lambda-url.ap-south-1.on.aws'
-  // const url = 'http://localhost:3000'
+  // const url = 'https://w5p5lfzxsqgwlwqvl7innu6nka0txdkr.lambda-url.ap-south-1.on.aws'
+   const url = 'http://localhost:3000'
 
 
   return(
-    <AppContext.Provider value={{ titleId, setTitleId, userInfo, setUserInfo, chat, url, setChat}} >
+    <AppContext.Provider value={{ titleId, setTitleId, userInfo, setUserInfo, chat, url, setChat }} >
       {children}
     </AppContext.Provider>
   )

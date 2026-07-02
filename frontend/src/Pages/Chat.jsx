@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import { useNavigate } from 'react-router-dom'
@@ -6,27 +6,39 @@ import Sidebar from '../Components/Sidebar'
 import { LuSend } from "react-icons/lu"
 import { ImSpinner2 } from "react-icons/im"
 import { AppContext } from '../Context/StoreContext'
+import { formateChat } from '../utile/Helper'
 
 const Chat = () => {
 
     const [message, setMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [prevChat, setPrevChat] = useState([])
     
     const  { titleId, setTitleId, chat, setChat, url } = useContext(AppContext)
     const navigate = useNavigate()
+
+    useEffect(()=>{
+     const a = formateChat(chat)
+        if (a.length == 0) {
+            return
+        }
+        chatApi(a)
+    },[prevChat])
 
     const show = () => {
         const data = { type: 'q', message: message }
         setChat(prev => [...prev, data])
         setMessage('')
-        chatApi()
+        setPrevChat([...prevChat, 'q'])
     }
 
-    const chatApi = async () => {
+    const chatApi = async (history) => {
         try {
             setIsLoading(true)
-            const res = await axios.post(`${url}/chat`, { message: message, titleId: titleId }, { withCredentials: true })
-            console.log(res.data)
+            const question = history[history.length-1].parts[0].text
+
+            const res = await axios.post(`${url}/chat`, { message: question, titleId: titleId, question: history}, { withCredentials: true })
+
             const data = { type: 'a', message: res.data.text }
             setTitleId(res.data.titleId)
             setChat(prev => [...prev, data])
