@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const url = 'https://w5p5lfzxsqgwlwqvl7innu6nka0txdkr.lambda-url.ap-south-1.on.aws/user/check'
-const url = 'http://localhost:3000/user/check'
+const url = 'https://w5p5lfzxsqgwlwqvl7innu6nka0txdkr.lambda-url.ap-south-1.on.aws/user/check'
+//const url = 'http://localhost:3000/user/check'
 
 const authtication = async () => {
     try {
