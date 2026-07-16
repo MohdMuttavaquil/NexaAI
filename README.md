@@ -2,6 +2,7 @@
 
 NexaAI is an AI-powered chat application that enables users to interact with an intelligent AI assistant, securely authenticate their accounts, and access their chat history anytime. The application provides personalized conversations by storing chat records for each authenticated user.
 
+One of the key features of NexaAI is chat context support. The chatbot remembers previous conversations of the authenticated user and uses that context to generate more relevant and personalized responses, which helps enhance the overall user experience.
 ## ✨ Features
 
 * AI-powered conversations using Google Gemini API
