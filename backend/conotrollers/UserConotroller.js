@@ -34,8 +34,8 @@ const singIn = async (req, res) => {
         const token = createToken(newUser._id, newUser.email)
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
 
@@ -66,8 +66,8 @@ const login = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
 
@@ -85,8 +85,8 @@ const logout = async (req, res) => {
     try {
         res.clearCookie("token", {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
         });
         res.json({ success: true, message: `${req.email} logout` })
     } catch (error) {

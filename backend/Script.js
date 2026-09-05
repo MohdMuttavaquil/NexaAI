@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 const app = express()
 app.use(cors({
    // origin: 'http://localhost:5173',
-   origin: 'https://nexa-ai-three.vercel.app',
+    origin: 'https://nexa-ai-three.vercel.app',
     credentials: true
 }))
 
@@ -23,11 +23,11 @@ app.use('/chat', chatRoute)
 app.use('/user', userRoute)
 
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.json('server is live')
 })
 
 
-app.listen(3000, ()=>{
+app.listen(3000, () => {
     console.log('server is running on port 3000')
 })
