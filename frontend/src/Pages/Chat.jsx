@@ -86,7 +86,7 @@ const Chat = () => {
 
                         <input type='text' value={message} placeholder='how can i help you today' onChange={(e) => setMessage(e.target.value)} className='outline-none rounded-2xl px-2 border-b-white border-b-2 md:w-[60%] py-2' />
 
-                        <button onClick={() => show()} className='py-2 bg-black px-3 rounded-2xl cursor-pointer '><LuSend /></button>
+                        <button disabled={isLoading} onClick={() => show()} className='py-2 bg-black px-3 rounded-2xl cursor-pointer '><LuSend /></button>
                     </div>
 
                 </div>
