@@ -48,14 +48,14 @@ const Singin = () => {
 
 
   return (
-    <div className='min-h-screen flex justify-center items-center flex-col'>
+    <div className='md:min-h-[90vh] min-h-[75vh] flex justify-center items-center flex-col'>
 
-      <div className='flex justify-between my-2 xl:min-w-[20%] md:min-w-[27%] items-center'>
+      <div className='flex justify-between my-2 xl:min-w-[20%] md:min-w-[27%] min-w-[90%] items-center'>
         <p className='text-2xl font-semibold'>{login ? "Login" : "Singup"}</p>
         <Link to={'/'} className='text-3xl font-semibold cursor-pointer'><LuX /></Link>
       </div>
 
-      <form className='flex flex-col gap-2 xl:min-w-[20%] md:min-w-[27%]' onSubmit={handleSubmit}>
+      <form className='flex flex-col gap-2 xl:min-w-[20%] md:min-w-[27%] min-w-[90%]' onSubmit={handleSubmit}>
 
         <input type='email' name='email' value={data.email} onChange={(e) => handleChange(e)} placeholder='Email' required className='outline-none rounded-2xl px-2 border-b-white border-b-2 py-2' />
 
