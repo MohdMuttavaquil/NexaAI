@@ -13,17 +13,17 @@ const Chat = () => {
     const [message, setMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [prevChat, setPrevChat] = useState([])
-    
-    const  { titleId, setTitleId, chat, setChat, url } = useContext(AppContext)
+
+    const { titleId, setTitleId, chat, setChat, url } = useContext(AppContext)
     const navigate = useNavigate()
 
-    useEffect(()=>{
-     const a = formateChat(chat)
+    useEffect(() => {
+        const a = formateChat(chat)
         if (a.length == 0) {
             return
         }
         chatApi(a)
-    },[prevChat])
+    }, [prevChat])
 
     const show = () => {
         const data = { type: 'q', message: message }
@@ -35,9 +35,9 @@ const Chat = () => {
     const chatApi = async (history) => {
         try {
             setIsLoading(true)
-            const question = history[history.length-1].parts[0].text
+            const question = history[history.length - 1].parts[0].text
 
-            const res = await axios.post(`${url}/chat`, { message: question, titleId: titleId, question: history}, { withCredentials: true })
+            const res = await axios.post(`${url}/chat`, { message: question, titleId: titleId, question: history }, { withCredentials: true })
 
             const data = { type: 'a', message: res.data.text }
             setTitleId(res.data.titleId)
@@ -61,7 +61,9 @@ const Chat = () => {
 
             <div className='min-h-screen text-white flex'>
 
-                <Sidebar />
+                <div className='md:flex hidden'>
+                    <Sidebar />
+                </div>
 
                 <div className='flex-1'>
 
