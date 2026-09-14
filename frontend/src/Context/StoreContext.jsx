@@ -2,17 +2,18 @@ import { createContext, useState } from "react";
 export const AppContext = createContext()
 import { authtication } from "../utile/Helper";
 
-export const AppProvider = ({ children }) =>{
-  
-   const [titleId, setTitleId] = useState()
-   const [userInfo, setUserInfo] = useState()
-   const [chat, setChat] = useState([])
-   const url = 'https://nexaai-1.onrender.com'
-   //const url = 'http://localhost:3000'
+export const AppProvider = ({ children }) => {
+
+  const [titleId, setTitleId] = useState()
+  const [userInfo, setUserInfo] = useState()
+  const [chat, setChat] = useState([])
+  const [showSidebar, setShowSidebar] = useState(false)
+  const url = 'https://nexaai-1.onrender.com'
+  //const url = 'http://localhost:3000'
 
 
-  return(
-    <AppContext.Provider value={{ titleId, setTitleId, userInfo, setUserInfo, chat, url, setChat }} >
+  return (
+    <AppContext.Provider value={{ titleId, setTitleId, userInfo, setUserInfo, chat, url, setChat, showSidebar, setShowSidebar }} >
       {children}
     </AppContext.Provider>
   )

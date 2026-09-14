@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { LuLogOut, LuTrash2 } from 'react-icons/lu'
 import { AppContext } from '../Context/StoreContext'
 import { authtication } from '../utile/Helper'
+import { IoClose } from "react-icons/io5"
 
 const Sidebar = () => {
 
   const [titles, setTitles] = useState([])
   const navigate = useNavigate()
-  const { userInfo, setUserInfo, setChat, setTitleId, titleId, url } = useContext(AppContext)
+  const { userInfo, setUserInfo, setChat, setTitleId, titleId, url, setShowSidebar } = useContext(AppContext)
 
   useEffect(() => {
     fetchTitles()
@@ -52,9 +53,16 @@ const Sidebar = () => {
   }
 
   return (
-    <div className='bg-gray-900 rounded text-white min-h-screen lg:w-[20%] flex flex-col justify-between'>
+    <div className='bg-gray-900 rounded text-white min-h-screen flex flex-col justify-between'>
 
-      <div className='mt-[20vh]'>
+      <div className='px-2 mt-4 flex justify-end md:hidden'>
+        <IoClose size={26} onClick={() => setShowSidebar(false)} />
+      </div>
+
+
+      {/* Chat history section */}
+
+      <div className='md:mt-[20vh] mt-[10vh]'>
         <button onClick={() => clearChat()} className='bg-blue-400 py-1.5 px-3 rounded-xl cursor-pointer text-white text-xl font-semibold ml-6'>New Chat</button>
       </div>
 
@@ -68,6 +76,8 @@ const Sidebar = () => {
 
         </div>)}
       </div>
+
+      {/* User inforamation */}
 
       <div className='my-10 pl-6'>
         <p>{userInfo}</p>
