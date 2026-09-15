@@ -58,9 +58,9 @@ const Chat = () => {
 
 
     return (
-        <div>
+        <>
 
-            <div className='md:h-screen h-[90vh] text-white flex w-full z-40'>
+            <div className='max-h-screen text-white flex w-full z-40'>
 
                 {/* Sidebar in Dasktop & big screen */}
                 <div className='hidden md:flex w-[20%]'>
@@ -111,7 +111,7 @@ const Chat = () => {
 
             </div>
 
-        </div>
+        </>
     )
 }
 
