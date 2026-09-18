@@ -53,7 +53,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className='bg-gray-900 rounded text-white h-screen flex flex-col justify-between'>
+    <div className='bg-gray-900 rounded text-white h-dvh flex flex-col justify-between'>
 
       <div className='px-2 mt-4 flex justify-end md:hidden'>
         <IoClose size={26} onClick={() => setShowSidebar(false)} />
