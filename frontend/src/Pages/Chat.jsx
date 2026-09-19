@@ -82,7 +82,7 @@ const Chat = () => {
                         <FaUser size={20} onClick={() => setShowSidebar(true)} className={`${showSidebar ? "hidden" : ""}`} />
                     </div>
 
-                    <div className='h-[85%] w-[95%] mx-2 md:mx-auto pt-16 overflow-y-scroll sidebar' >
+                    <div className='md:h-[85%] h-[80%] w-[95%] mx-2 md:mx-auto pt-16 overflow-y-scroll sidebar' >
 
                         {chat && chat.map((item, index) => <div key={index} className={`${item.type === 'q' ? "text-right" : "text-left"} my-8 md:mx-10 mx-2`}>
 
@@ -101,7 +101,7 @@ const Chat = () => {
 
                     {/* input and Submit button */}
 
-                    <form onSubmit={show} className='my-2 flex justify-center gap-2 mx-auto'>
+                    <form onSubmit={show} className='md:my-2 my-0.5 flex justify-center gap-2 mx-auto'>
 
                         <input type='text' value={message} placeholder='how can i help you today' onChange={(e) => setMessage(e.target.value)} className='outline-none rounded-2xl px-2 border-b-white border-b-2 md:w-[60%] w-[80%] py-2' required />
 
