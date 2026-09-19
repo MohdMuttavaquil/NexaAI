@@ -81,7 +81,7 @@ const Chat = () => {
                         <FaUser size={20} onClick={() => setShowSidebar(true)} className={`${showSidebar ? "hidden" : ""}`} />
                     </div>
 
-                    <div className='h-[85vh] w-[95%] mx-2 md:mx-auto pt-16 overflow-y-scroll sidebar' >
+                    <div className='h-[85%] w-[95%] mx-2 md:mx-auto pt-16 overflow-y-scroll sidebar' >
 
                         {chat && chat.map((item, index) => <div key={index} className={`${item.type === 'q' ? "text-right" : "text-left"} my-8 md:mx-10 mx-2`}>
 
