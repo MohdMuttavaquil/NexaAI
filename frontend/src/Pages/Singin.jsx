@@ -11,6 +11,8 @@ const Singin = () => {
     password: ''
   })
   const [login, setLogin] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+
   const { url } = useContext(AppContext)
   const navigate = useNavigate()
 
@@ -43,7 +45,16 @@ const Singin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    { login ? loginApi() : singinApi() }
+
+    try {
+      setIsLoading(true)
+      { login ? loginApi() : singinApi() }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
+    }
+
   }
 
 
@@ -61,7 +72,7 @@ const Singin = () => {
 
         <input type='password' name='password' value={data.password} onChange={(e) => handleChange(e)} placeholder='Password' required className='outline-none rounded-2xl px-2 border-b-white border-b-2 py-2' />
 
-        <button type='submit' className='bg-amber-600 text-white rounded-xl px-3 py-1 cursor-pointer hover:bg-amber-800 my-4'>{login ? "Login" : "Singup"}</button>
+        <button type='submit' disabled={isLoading} className='bg-amber-600 text-white rounded-xl px-3 py-1 cursor-pointer hover:bg-amber-800 my-4'>{login ? "Login" : "Singup"}</button>
 
         <div>
           {login ? <p>If You did not have account <span onClick={() => setLogin(false)} className='text-blue-500 mx-0.5 cursor-pointer'>Create Account</span></p> :
