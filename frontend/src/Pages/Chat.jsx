@@ -27,7 +27,7 @@ const Chat = () => {
     }, [prevChat])
 
     const show = (e) => {
-        e.preventDefaulat()
+        e.preventDefault()
         const data = { type: 'q', message: message }
         setChat(prev => [...prev, data])
         setMessage('')
