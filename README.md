@@ -56,4 +56,4 @@ One of the key features of NexaAI is chat context support. The chatbot remembers
 
 ## 👨‍💻 Author
 
-**Mohd Junaid**
+**MOHD MUTTAVAQUIL**
